@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv ${VENV}
-                    source ${VENV}/bin/activate
+                    . ${VENV}/bin/activate
                     python -m pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -27,7 +27,7 @@ pipeline {
         stage('Run the tests') {
             steps {
                 sh '''
-                    source ${VENV}/bin/activate
+                    . ${VENV}/bin/activate
                     python manage.py test
                 '''
             }
